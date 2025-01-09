@@ -1,0 +1,577 @@
+@charset "utf-8";
+@import 'mixin';
+@import url('//cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css');
+@import url('//fonts.googleapis.com/css2?family=Luckiest+Guy&family=Noto+Sans+KR:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*-------------------------------------------------
+title       : 초기화
+Author      : PLAN I
+Create date : 2024-12-31
+-------------------------------------------------*/
+
+*, *::before, *::after {box-sizing: inherit;}
+body {@include font($fs, $cl, $lh); overflow: hidden; position: relative; left: 0; top: 0; min-height: 100vh; margin: 0; padding: 0; font-family : $ff;}
+header, footer, main, section, article, nav, aside {display: block;}
+ul, ol, li, dl, dt, dd {margin: 0; padding: 0; list-style: none;}
+h1, h2, h3, h4, h5, h6, p, form, figure, figcaption {margin: 0; padding: 0;}
+fieldset, hr {display: block; margin: 0; padding: 0; border: 0 none;}
+input, select {max-width: 100%; vertical-align: middle;}
+input, select, button, textarea, optgroup {margin: 0; font-family: inherit; font-size: inherit; color: inherit; vertical-align: middle;}
+address, em, i {font-style: normal;}
+textarea {width: 100%;}
+strong {font-weight: 700;}
+a {color: inherit; text-decoration: none; vertical-align: middle;}
+button {padding: 0; border: 0 none; background: none; cursor: pointer;}
+input[type='submit'] {appearance: none;}
+img {max-width: 100%; border: 0 none; font-size: 0; vertical-align: middle;}
+table {width: 100%; border-collapse: collapse;}
+caption, legend, .swiper-notification, .ir {overflow: hidden; position: absolute; width: 1px; height: 1px; padding: 0; border: 0 none; clip: rect(0, 0, 0, 0); white-space: nowrap;}
+
+html 
+{
+    overflow: hidden; overflow-y: auto; margin: 0; padding: 0; box-sizing: border-box; font-size: 10px; scrollbar-width: none; -ms-overflow-style: none;
+    &:-webkit-scrollbar {display: none;}
+}
+
+input, textarea
+{
+    resize: none;
+    &::-webkit-input-placeholder {font-weight: inherit; color: inherit; opacity: inherit;}
+    &::-moz-placeholder {font-weight: inherit; color: inherit; opacity: inherit;}
+    &::placeholder {font-weight: inherit; color: inherit; opacity: inherit;}
+}
+
+select 
+{
+    appearance: none;
+    &::-ms-expand {display: none;}
+}
+
+@media (max-width: $web)    { html {font-size: 8px;} }
+@media (max-width: $pad)    { html {font-size: 7px;} }
+@media (max-width: $mobile) { html {font-size: 6px;} }
+
+:root
+{
+    --fs    : 1.8rem;               
+    --cl    : #000;              
+    --lh    : 150%;                  
+
+    --width1 : 160rem;
+    --width2 : calc(100% - 20rem);
+
+    --font1 : 'Luckiest Guy';
+    --color1: #177351;    
+    --color2: #F2B90C;    
+    --color3: #D97A07;    
+}
+
+body
+{
+    padding: 45rem 0 10rem;
+    &::before, &::after {visibility: hidden; position: fixed; left: 0; top: 0; width: 100%; content: ''; opacity: 0;}
+    &::before {z-index: 1; height: 100%; background-color: var(--color1); animation: bg1 2s;}
+    &::after {z-index: 3; height: 0; background: linear-gradient(to bottom, var(--color1) 30%, var(--color2) 30% 60%, var(--color3) 60%); transform: translateY(-200%); animation: bg2 2s 1s;}
+}
+
+@keyframes bg1
+{
+    0%      {visibility: visible; opacity: 1;}
+    89%     {visibility: visible; opacity: 1;}
+    90%     {visibility: hidden; opacity: 0;}
+    100%    {visibility: hidden; opacity: 0;}
+}
+
+@keyframes bg2
+{
+    0%      {visibility: visible; height: 100%; transform: translateY(200%); opacity: 1;}
+    20%     {visibility: visible; height: 100%; transform: translateY(200%); opacity: 1;}
+    98%     {visibility: visible; height: 50%; transform: translateY(-200%); opacity: 1;}
+    100%    {visibility: hidden; height: 0; transform: ttranslateY(-200%); opacity: 0;}
+}
+
+h1 
+{
+    position: fixed; left: 10rem; right: 10rem; top: 10rem; font-size: inherit; font-weight: 400; text-align: center; animation: tt3 5s;
+    strong {font-family: var(--font1); font-size: 25rem; color: inherit; letter-spacing: 0.2rem; white-space: nowrap; line-height: 1; animation: tt1 5s;}
+    span {display: block; position: relative; margin-top: 2rem; padding-top: 3rem; border-top: 1px solid #000; clip-path: inset(0 0 0 0); animation: tt2 5s;}
+}
+
+@keyframes tt1
+{
+    0%      {@include position(top); right: 0; z-index: 2; width: 50%; color: #fff;}
+    35%     {@include position(top); right: 0; z-index: 2; width: 100%; color: #fff;}
+    45%     {position: static; color: inherit; transform: translate(0);}
+    100%    {position: static; color: inherit; transform: translate(0);}
+}
+
+@keyframes tt2
+{
+    0%      {top: -2rem; opacity: 0;}
+    52%     {top: -2rem; opacity: 0; clip-path: inset(0 50% 0 50%);}
+    57%     {top: 0; opacity: 1; clip-path: inset(0 0 0 0);}
+    100%    {top: 0; opacity: 1;}
+}
+
+@keyframes tt3
+{
+    0%      {z-index: 2; height: calc(100% - 20rem);}
+    51%     {z-index: 2; height: calc(100% - 20rem);}
+    52%     {z-index: inherit; height: auto;}
+    100%    {z-index: inherit; height: auto;}
+}
+
+main {@include bg1(0); padding: 0 10rem; background-color: #fff; word-break: keep-all;}
+footer {display: block; margin: 10rem 10rem 0; padding-top: 2rem; border-top: 1px solid #000; font-size: 1.6rem; text-align: right;}
+
+section 
+{
+    ul ~ small {display: block; font-size: 85%; font-weight: 600; color: var(--color3); letter-spacing: -0.05rem;}
+    
+    h2 
+    {
+        display: inline-block; position: relative; margin: 0 0 3rem; font-size: 20rem; font-weight: 200; line-height: 0.8; vertical-align: top;
+        small {position: relative; top: -2rem; font-size: 50%;}
+
+        & > strong 
+        {
+            display: block; overflow: hidden; margin-bottom: -3rem; padding-bottom: 5rem; font-weight: 200;
+            span {display: inline-block; font-weight: 200; vertical-align: top; transform: translateY(150%);}
+        }
+
+        & > span 
+        {
+            display: inline-block; position: absolute; right: 0; top: 0; margin-top: -2rem; padding: 1rem 1.5rem; background-color: #000; font-size: 2rem; font-weight: 500; color: #fff; line-height: 1; vertical-align: middle; white-space: nowrap; clip-path: inset(0 0 0 100%);
+            strong {font-weight: 900; color: var(--color2);}            
+        }        
+
+        b
+        {
+            font-weight: 200;
+            &::before {display: inline-block; position: relative; left: 0.3rem; top: -0.2rem; width: 5rem; height: 1px; margin-left: 1rem; background-color: #fff; content: ''; vertical-align: middle;}
+        }
+
+        & + p {margin-bottom: 5rem; font-size: 2.2rem; font-weight: 200; letter-spacing: -0.1rem;}
+    }
+
+    .group
+    {
+        overflow: hidden; padding-top: 10rem;
+
+        p, li, & > small {position: relative; top: -5rem; opacity: 0; transition: $time2;}
+
+        ul
+        {
+            margin-bottom: 1rem;
+            span {display: block;}
+            small {color: #999;}
+        }
+
+        &.active
+        {
+            h2
+            {
+                & > strong span 
+                {
+                    transform: translateY(0); transition: $time2;
+
+                    @for $i from 1 through 100
+                    {
+                        $j: $i * 0.1;
+                        &:nth-child(#{$i}) {transition-delay: #{$j}s;}
+                    }
+                }
+                
+                & > span {clip-path: inset(0 0 0 0); transition: all 1s 1s;}
+            }
+
+            p, li, & > small {top: 0; opacity: 1;}
+            p {transition-delay: 1s;}
+            & > small {transition-delay: 1.5s;}
+
+            li
+            {
+                &:nth-child(1) {transition-delay: 1.2s;}
+                &:nth-child(2) {transition-delay: 1.3s;}
+            }
+        }
+    }
+}
+
+#section1, #section2 
+{
+    position: relative;
+    &.active .imgs {position: fixed; left: 10rem; right: 10rem;}  
+
+    .imgs 
+    {
+        overflow: hidden; position: absolute; left: 0; right: 0; top: 10rem; z-index: 0;
+        ul {font-size: 0; white-space: nowrap;}
+    }
+}
+
+#section1
+{
+    padding-top: 300vh;
+    &.active .imgs li:first-child img {width: auto;}
+
+    & ~ section 
+    {
+        margin-top: 10rem;
+        h2 {font-size: 15rem;}
+    } 
+    
+    .imgs
+    {
+        animation: img1 5s;
+        ul {@include bg1(0); font-size: 0; white-space: nowrap;}
+        img {vertical-align: top; transition: $time1;}
+        //.active img {width: auto !important; height: calc(100vh - 20rem) !important;}
+        
+        li 
+        {
+            display: inline; 
+            &:first-child img {width: 100%; animation: img2 5s;}
+            // &:nth-child(n+2) img {position: relative; left: 3rem; opacity: 0; transition: left 0.5s 0.5s, opacity 0.5s 0.5s;}
+            // &.active img {left: 0; opacity: 1;}
+        }
+    }
+}
+
+@keyframes img1
+{
+    0%      {overflow: visible;}
+    55%     {overflow: visible;}
+    56%     {overflow: hidden;}
+    100%    {overflow: hidden;}
+}
+
+@keyframes img2
+{
+    0%      {position: relative; top: -55rem; width: calc(100% + 20rem); max-width: inherit; margin: 0 10rem 0 -10rem;}
+    45%     {position: relative; top: -55rem; width: calc(100% + 20rem); max-width: inherit; margin: 0 10rem 0 -10rem;}
+    55%     {position: relative; top: 0; width: 100%; margin: 0 10rem 0 0;}
+    56%     {margin: 0;}
+    100%    {margin: 0;}
+}
+
+#section2
+{
+    padding-top: 350vh;
+    &::before {position: fixed; left: 0; top: 0; z-index: 2; width: 0; height: 100vh; background-color: #fff; content: '';}
+
+    &.active
+    {
+        &::before {width: 10rem;}
+        .group {position: fixed; right: calc(100% - 10rem);}
+    }
+
+    &.disable 
+    { 
+        &::before {left: -10rem;}
+        &::before, .imgs, .group {position: absolute; top: auto; bottom: 0;} 
+        .group {right: 100% !important; width: 50% !important;}
+        
+        .imgs 
+        {
+            left: 0 !important; right: 0 !important;
+            li:last-child {top: 0 !important; transform: translateY(0) !important;}
+        }
+    }
+
+    .imgs
+    {
+        ul {height: calc(100vh - 20rem);}
+        img {@include position(left); bottom: 0; min-width: 100%; max-width: inherit; min-height: 100%;}
+        p {position: absolute; right: 0; left: 0; bottom: 0; padding: 5rem; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)); font-size: 2rem; font-weight: 200; color: #fff;}
+        strong {display: block; font-size: 5rem; margin-bottom: 2rem;}
+        
+        li 
+        {
+            overflow: hidden; float: left; position: relative; width: 50%; height: 100%;
+            &:last-child {float: none; position: absolute; right: 0; top: 100%;}
+        }
+    }
+
+    .group
+    {
+        display: flex; position: absolute; right: 200%; top: 10rem; z-index: 1; width: calc(50% - 10rem); height: calc(100vh - 20rem); padding: 10rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); flex-direction: column; justify-content: center;
+
+        h2
+        {
+            & > span {position: static;}
+            small {display: block; margin: 4rem 0 -1rem;}
+        }
+    }
+}
+
+#section3
+{    
+    position: relative; padding-top: calc(200vh + 10rem);
+    .group {overflow: visible; position: absolute; left: 0; top: 50vh; padding-left: 20rem; text-shadow: 0 0 2rem #fff;}
+    &.active .imgs {position: fixed; left: 10rem; width: calc(100% - 20rem);}
+
+    h2
+    {
+        margin: 3rem 0 0;
+        span {top: auto; bottom: -3rem; right: 7rem;}
+    }
+
+    .imgs
+    {
+        position: absolute; left: 0; top: 0; z-index: -1; width: 100%; height: 100vh; padding: 10rem 0 0 20rem; 
+
+        span
+        {
+            position: absolute; left: 0; top: 0; width: 100%; height: 100vh;
+            &::before, &::after {transition: all 0.5s;}
+            &::before {position: absolute; left: 0; top: 10rem; width: calc(100% + 10rem); height: 1px; background-color: #000; content: '';}
+            &::after {position: absolute; left: 10rem; top: 10rem; width: 1px; height: 45rem; background-color: #000; content: '';}
+
+            &.active
+            {
+                &::before {width: 0;}
+                &::after {height: 0;}
+            }
+        }
+
+        ul {display: inline-block; width: 100%; padding-top: 10rem; vertical-align: top;}
+        img {position: absolute; left: 0; top: 0; max-width: inherit; height: 100%;}
+
+        li
+        {
+            &:nth-last-child(n+2) {overflow: hidden; float: right; position: relative; width: 50rem; height: 50rem;}
+
+            &:last-child 
+            {
+                position: fixed; left: 20rem; bottom: 0; width: 100%; height: 50vh; clip-path: inset(100% 0 0 0);
+                img {position: fixed; top: auto; height: 50vh;}
+            }
+        }
+    }
+}
+
+#section4
+{
+    padding-top: 50vh;
+    h2 {max-width: 150rem; text-shadow: 0 0 2rem #fff;}
+
+    .imgs
+    {
+        position: fixed; left: 0; top: 0; z-index: -1; width: 100%; padding: 10rem;
+        ul {display: flex;}
+        img {@include position(center); min-width: 100%; max-width: inherit; height: 100%;}
+        div {@include position(top); left: 0; z-index: 1; width: 100%; padding: 30rem 2rem; font-size: 1.5rem; color: #fff; text-shadow: 0 0 3rem rgba(0, 0, 0, 1); text-align: center; line-height: 120%; word-break: keep-all;}
+        strong {display: block; margin-bottom: 3rem; font-size: 6rem; line-height: 1;}
+        span {font-size: 2rem;}
+        
+        li
+        {
+            @include bg1(0);
+            overflow: hidden; min-width: calc(50% - 2.5rem); max-width: calc(50% - 2.5rem); height: calc(100vh - 30rem); clip-path: inset(0 100% 0 0);
+            & + li {margin: 10rem 0 0 5rem;}
+        }
+    }
+}
+
+@media (max-width: 1800px)
+{
+    body {padding-top: 40rem;}
+    h1 strong {font-size: 20rem;}
+}
+
+@media (max-width: 1560px)
+{
+    body {padding-top: 35rem;}
+    section h2, h1 strong {font-size: 15rem;}
+    #section2 .group {padding: 5rem;}
+    #section4 .imgs strong {font-size: 4rem;}
+
+    #section3
+    {
+        h2 span {right: 7rem;}
+        .imgs li:nth-last-child(n+2) {width: 40rem; height: 40rem;}
+    }
+}
+
+@media (max-width: $web)
+{
+    body {padding: 25rem 0 5rem;}
+    main {padding: 0 5rem;}
+    footer {margin: 10rem 5rem 0;}
+
+    section
+    {
+        h2 
+        {
+            font-size: 12rem;
+            & > span {padding: 0.8rem 1rem; font-size: 1.6rem;}
+            & + p {margin: -3rem 0 3rem; font-size: 2rem;}
+            b::before {width: 3rem; margin-left: 0;}
+        }
+
+        .group {padding-top: 8rem;}
+    }
+
+    h1 
+    {
+        left: 5rem; right: 5rem; top: 5rem; font-size: 1.5rem;
+        strong {font-size: 12rem;}
+    }
+
+    #section1, #section2
+    {
+        .imgs {top: 5rem;}
+        &.active .imgs {left: 5rem; right: 5rem;}
+    }
+
+    #section1 
+    {
+        padding-top: 400vh;
+
+        & ~ section 
+        {
+            margin-top: 5rem;
+            h2 {font-size: 12rem;}
+        }
+    }
+
+    #section2
+    {
+        .imgs ul, .group {height: calc(100vh - 10rem);}
+        
+        .group 
+        {
+            top: 5rem; width: calc(50% - 5rem);
+            h2 small {margin-bottom: -3rem;}
+        }
+
+        &.active
+        {
+            &::before {width: 5rem;}
+            .group {right: calc(100% - 5rem);}
+        }
+    }
+
+    #section3
+    {
+        padding-top: 250vh;
+        .group {padding-left: 10rem;}
+        &.active .imgs {left: 5rem; width: calc(100% - 10rem);}
+
+        .imgs 
+        {
+            padding: 5rem 0 0 5rem;
+            ul {padding-top: 5rem;}
+            
+            li
+            {
+                &:nth-last-child(n+2) {width: 35rem; height: 35rem;}
+                &:last-child {left: 10rem;}
+            }
+
+            span
+            {
+                &::before, &::after {top: 5rem;}
+                &::after {left: 5rem;}
+            }
+        }
+    }
+
+    #section4
+    {
+        padding-top: 80vh;
+
+        .imgs 
+        {
+            padding: 5rem;
+    
+            li
+            {
+                min-width: calc(50% - 1rem); max-width: calc(50% - 1rem);
+                & + li {margin: 20rem 0 0 2rem;}
+            }
+        }
+    }
+}
+
+@media (max-width: $pad)
+{
+    body {padding-top: 20rem;}
+    #section1 ~ section h2 {font-size: 8rem;}
+
+    h1
+    {
+        font-size: 1.1rem;
+        strong {font-size: 8rem;}
+        span {padding-top: 2rem;}
+    }
+
+    #section2
+    {
+        padding-top: 450vh;
+
+        .imgs li 
+        {
+            float: none; width: 100%; height: calc(50vh - 5rem);
+            img {max-width: 100%; max-height: 100%;}
+        }
+
+        .group 
+        {
+            width: calc(100% - 10rem);
+            h2 small {margin: 4rem 0 -1rem;}
+        }
+
+        &.disable 
+        {
+            .imgs li:last-child {top: 50% !important;}
+            .group {width: 100% !important;}
+        }
+    }
+
+    #section3 .imgs li:nth-last-child(n+2) {width: 25rem; height: 25rem;}
+}
+
+@media (max-width: $mobile)
+{
+    h1
+    {
+        strong {font-size: 6.5rem;}
+        span {margin-top: 1.5rem; padding-top: 1.5rem; line-height: 180%;}
+    }
+
+    section h2 {font-size: 10rem;}
+    #section1 ~ section h2 {font-size: 6rem;}
+    #section2 .imgs strong {font-size: 4rem;}
+
+    #section3
+    {
+        h2 span {bottom: -2.5rem; right: 4rem;}
+        .group {padding-left: 5rem;}
+
+        .imgs
+        {
+            padding-left: 2rem;
+            span::after {left: 2rem;}
+            li:last-child {left: 5rem;}
+        }
+    }
+
+    #section4
+    {
+        h2 > span {top: 100%; margin: 0.5rem 0 0;}
+
+        .imgs
+        {
+            ul {display: block;}
+            strong {margin-top: 1rem; font-size: 3rem;}
+
+            li 
+            {
+                min-width: calc(100% - 10rem); height: calc(50vh - 6rem);
+                & + li {margin: 2rem 0 0 10rem;}
+            }
+        }
+    }
+}
